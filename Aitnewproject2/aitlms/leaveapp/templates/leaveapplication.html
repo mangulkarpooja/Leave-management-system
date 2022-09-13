@@ -1,0 +1,86 @@
+{% extends 'empbase.html' %}
+
+{% block main %}
+
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class= "p-2" style="border-bottom : 2px solid orange"> Apply For Leave</h5>
+
+        <div class="container-fluid">
+            <form method ="post">
+                {% csrf_token %}
+                <div class="from-row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Start Date</lable>
+                            <input type="date" name="start date" class="form-control" placeholder="Enter start date" required>
+<!--                            value="{{employee.user.User_Name}}-->
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>End Date</lable>
+                            <input type="date" name="End Date" class="form-control" placeholder="Enter End Date"required>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label for="Leavetype">Leavetype</label>
+                            <select id="Leavetype"name=Leavetype class="form-control">
+                                <option value="Casual Leave">Casual Leave</option>
+                                <option value="Sick Leave">Sick Leave</option>
+                                <option value="Privilege">Privilege</option>
+                                <option value="Marriage">Marriage</option>
+                            </select>
+<!--                            <input type="text" name="Leavetype" class="form-control" placeholder="Enter Leavetype" required >-->
+
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Reason</lable>
+                            <input type="text" name="Reason" class="form-control" placeholder="Enter Reason For Leave" required >
+                        </div>
+                        </div>
+
+
+<!--                    <div class="col-sm-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <lable>PhoneNumber</lable>-->
+<!--                            <input type="text" name="PhoneNumber" class="form-control" placeholder="Enter PhoneNumber" required>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                        <div class="col-sm-8">-->
+<!--                        <div class="form-group">-->
+<!--                            <lable>Address</lable>-->
+<!--                            <input type="text" name="Address" class="form-control" placeholder="Enter your Address" required>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+                </div>
+                <br>
+                <input type="submit" value="Request For Leave" class="btn btn-primary">
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alter('Applied  Successfully');
+    window.location = ('{% url 'Leaveappliction' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alter(something went wrong,Try Again...');
+</script>
+{% endif %}
+
+{% endblock %}

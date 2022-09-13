@@ -1,0 +1,73 @@
+{%include 'header.html'%}
+<style>
+   span.psw {
+  float: right;
+  padding-top: 10px;
+}
+.container {
+  padding: 10px;
+
+ .cancelbtn {
+  width: auto;
+  padding: 5px 10px;
+  background-color: #f44336;
+}
+span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+
+     button:hover {
+  opacity: 0.8;
+}
+</style>
+
+<!--{% block content %}-->
+
+
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class= "p-2" style="border-bottom : 2px solid orange">Admin Login</h5>
+
+        <div class="container-fluid">
+            <form method ="POST">
+                {% csrf_token %}
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <lable>Name</lable>
+                            <input type="text" name="uname" class="form-control" placeholder="Enter Email" required>
+                        </div>
+                           </div>
+                            <div class="col-sm-6">
+                               <div class="form-group">
+                               <lable>Password</lable>
+                               <input type="password" name="password" class="form-control" placeholder="Enter Password" required >
+                                 </div>
+                           </div>
+                        <br>
+                          <input type="submit" value="Login" class="btn btn-primary">
+<!--                        <div class="container" style="background-color:#f1f1f1">-->
+<!--                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>-->
+<!--                        <span class="psw">Forgot <a href="#">password?</a></span>-->
+<!--                           </div>-->
+
+                       </form>
+                        </div>
+                           </div>
+                               </div>
+{% if error == "no" %}
+    <script>
+      alert('Logged In Successfully');
+      window.location = "{% url 'Admindashbord' %}";
+    </script>
+  {% endif %}
+
+  {% if error == "yes" %}
+    <script>
+      alert('Invalid Login Credentials,Try Again');
+    </script>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'empbase.html' %}
+
+{% block main %}
+
+<div class="card shadow m-2">
+    <div class="card-body">
+        <h5 class= "p-2" style="border-bottom : 2px solid orange"> Update Profile</h5>
+
+        <div class="container-fluid">
+            <form method ="post">
+                {% csrf_token %}
+                <div class="from-row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>UserName</lable>
+                            <input type="text" name="username" class="form-control" value="{{Registraion.first_name}}" required>
+<!--                            value="{{employee.user.User_Name}}-->
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Email-Id</lable>
+                            <input type="Email" name="Email" class="form-control" placeholder="Enter Email"required>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Employee Department</lable>
+                            <input type="text" name="dept" class="form-control" placeholder="Enter Emp Department" required >
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Employee Designation</lable>
+                            <input type="text" name="dept" class="form-control" placeholder="Enter Emp Designation" required >
+                        </div>
+                        </div>
+
+
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>PhoneNumber</lable>
+                            <input type="text" name="PhoneNumber" class="form-control" placeholder="Enter PhoneNumber" required>
+                        </div>
+
+                    </div>
+                        <div class="col-sm-8">
+                        <div class="form-group">
+                            <lable>Address</lable>
+                            <input type="text" name="Address" class="form-control" placeholder="Enter your Address" required>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+<!--                <input type="submit" value="Submit" class="btn btn-primary">-->
+                <a class="btn btn-primary" href="#" role="button">Update</a
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alter('Profile updated Successfully');
+    window.location = ('{% url 'Eprofile' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alter(something went wrong,Try Again...');
+</script>
+{% endif %}
+
+{% endblock %}
